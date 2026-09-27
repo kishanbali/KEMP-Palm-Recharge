@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KEMP EYE AI — Palm Recharge</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#e7dcc1;color:#17120d;font-family:Georgia,serif}
+.card{max-width:620px;min-height:100vh;margin:auto;padding:24px 22px;background:linear-gradient(135deg,#fbf3da,#f1e5c3,#f9efd4);border:1px solid #b89b61}
+.brand{text-align:center;font:700 25px Arial;letter-spacing:9px;margin:10px 0 24px}.eye{font-size:30px}
+h1{text-align:center;font-size:55px;line-height:.95;margin:0 0 22px;font-weight:600}
+h2{text-align:center;font:600 22px Arial;letter-spacing:6px;color:#765315;margin:0 0 38px}
+p{font-size:21px;line-height:1.48;margin:0 0 25px}
+.player{margin:22px auto 8px;border:2px solid #5e4213;border-radius:45px;padding:9px 12px;display:flex;align-items:center;gap:12px;background:#f5dfad;max-width:480px}
+button{cursor:pointer}.play{width:62px;height:50px;border:0;border-radius:50%;background:#087cff;color:white;font:bold 22px Arial}.stop{width:46px;height:46px;border-radius:50%;border:1px solid #b79a61;background:#fff3d6;font:bold 18px Arial}.freq{flex:1;text-align:center;font:bold 21px Arial}.status{text-align:center;font:14px Arial;margin:8px 0 18px}
+.actions{display:flex;gap:14px;justify-content:center;margin-bottom:24px}.actions button{flex:1;padding:14px;border-radius:30px;border:2px solid #765315;background:#f4dfae;font:bold 18px Arial}.actions .wa{background:#20b858;color:white;border-color:#168b43}
+.divider{height:1px;background:#a98a4a;margin:20px 0}.charging{text-align:center;font:bold 21px Arial;letter-spacing:3px;margin:15px 0 22px}
+.foot{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:14px;font:14px Arial}.foot>div{padding:4px 8px;border-right:1px solid #9f895c}.foot>div:last-child{border:0}a{color:#075caa;word-break:break-word}.copy{text-align:center;font:14px Arial;margin-top:22px}
+@media(max-width:500px){.card{padding:20px 15px}h1{font-size:43px}h2{font-size:17px;letter-spacing:4px}p{font-size:18px}.brand{font-size:21px}.foot{grid-template-columns:1fr}.foot>div{border-right:0;border-bottom:1px solid #9f895c}.actions{flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="card">
+<div class="brand">KEMP <span class="eye">◉</span> AI</div>
+<h1>Palm Recharge</h1>
+<h2>138.1 HZ HARMONIC RESONANCE</h2>
+<p>Allow your energy to gather right here, untouched by the noise of the day. Place a warm palm flat against the center of your chest, letting your hand rest as a quiet bridge over the source of your own vitality. Beneath your palm, notice the steady, untiring drum of your heart—beating completely on its own, holding you together without a single command.</p>
+<p>Let the air draw itself inward, filling the chamber beneath your hand with a quiet, refreshing current. There is nothing to force, nothing to repair, and no distant screens to chase.</p>
+<p>As you exhale, let a long, slow release drop down through your shoulders, your arms, and deep into the earth, draining every drop of fatigue. In this exact touch, the breath and the heartbeat meet, recharging your entire being from the inside out with effortless, enduring peace.</p>
+<div class="player">
+<button class="play" id="play">▶</button><div class="freq" id="label">PLAY 138.1 Hz</div><button class="stop" id="stop">■</button>
+</div>
+<div class="status" id="status">Tap PLAY to experience the tone.</div>
+<div class="actions"><button id="share">↗ Share</button><button class="wa" id="whatsapp">◉ WhatsApp</button></div>
+<div class="divider"></div><div class="charging">♧ KEMP EYE ◉ AI CHARGING POINT</div><div class="divider"></div>
+<section class="foot">
+<div>🎧<br>AI Generated<br>Frequency Audio<br>138.1 Hz</div>
+<div>🟢<br>Join Our Community<br><a href="https://chat.whatsapp.com/BiuWy6NVFboGHGqt4mKBSM">https://chat.whatsapp.com/<br>BiuWy6NVFboGHGqt4mKBSM</a></div>
+<div>🛡️<br>Disclaimer:<br>For wellness and personal use only. Not a medical advice.</div>
+</section>
+<div class="copy">@KishanBali/KEMP Wisdom Publications All rights reserved<br>AI generated Frequency Audio 138.1</div>
+</main>
+<script>
+let ctx=null,osc=null,gain=null;
+const F=138.1,play=document.getElementById('play'),stop=document.getElementById('stop'),label=document.getElementById('label'),status=document.getElementById('status');
+function start(){if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();if(osc)return;osc=ctx.createOscillator();gain=ctx.createGain();osc.type='sine';osc.frequency.value=F;gain.gain.value=.12;osc.connect(gain).connect(ctx.destination);osc.start();play.textContent='❚❚';label.textContent='138.1 Hz — PLAYING';status.textContent='138.1 Hz is playing. Tap STOP to end.'}
+function end(){if(!osc)return;const o=osc,g=gain,t=ctx.currentTime;g.gain.setValueAtTime(g.gain.value,t);g.gain.linearRampToValueAtTime(0,t+.08);o.stop(t+.1);osc=null;gain=null;play.textContent='▶';label.textContent='PLAY 138.1 Hz';status.textContent='Tap PLAY to experience the tone.'}
+play.onclick=()=>osc?end():start();stop.onclick=end;
+document.getElementById('share').onclick=async()=>{const text='KEMP EYE AI — Palm Recharge — 138.1 Hz Harmonic Resonance';if(navigator.share){try{await navigator.share({title:'KEMP EYE AI — Palm Recharge',text})}catch(e){}}else{await navigator.clipboard?.writeText(text);alert('Share text copied.');}};
+document.getElementById('whatsapp').onclick=()=>location.href='https://chat.whatsapp.com/BiuWy6NVFboGHGqt4mKBSM';
+</script>
+</body></html>
